@@ -41,9 +41,9 @@ function addNumbers(num1, num2) {
 */
 function makePersonObject(id,name,email) {
   var personalObject = {
-    id:this.id,
-    name: this.name,
-    email: this.email
+    id:id,
+    name: name,
+    email:email
   }
   return personalObject;
 }
@@ -309,7 +309,7 @@ const argTimesTwo = (num) => {
 */
 function carMaker(odometer) {
   var returnedObject = {
-    odometer: this.odometer,
+    odometer: odometer,
     drive: function(distance){
       odometer = odometer + distance;
       returnedObject.odometer = odometer;
