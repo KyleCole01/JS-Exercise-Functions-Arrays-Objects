@@ -151,7 +151,8 @@ function get3rdCar(inventory) {
 */
 function getCarInfoByIndex(inventory, index) {
   var chosenCar = inventory[index];
-  return 'This is a '+ chosenCar.car_make + ' ' + chosenCar.car_model;
+  return  `This is a ${chosenCar.car_make} ${chosenCar.car_model}`;
+ 
 }
 
 /**
@@ -166,8 +167,7 @@ it will return `This is a Lincoln Town Car`.
  */
 function getLastCarInfo(inventory) {
   var chosenCar = inventory[inventory.length -1];
-  return 'This is a '+ chosenCar.car_make + ' ' + chosenCar.car_model;
-
+  return  `This is a ${chosenCar.car_make} ${chosenCar.car_model}`;
 }
 
 /**
@@ -185,7 +185,7 @@ function getLastCarInfo(inventory) {
 function getCarInfoById(inventory, desiredId) {
   for(let i=0;i<inventory.length;i++){
       if(inventory[i].id === desiredId){
-        return 'This is a '+ inventory[i].car_make + ' ' + inventory[i].car_model;
+        return `This is a ${inventory[i].car_make} ${inventory[i].car_model}` ;
         break;
       }else{
         continue;
@@ -259,10 +259,11 @@ function getOlderCars(inventory, maxYear) {
 function getGermanCars(inventory) {
   var returnArray = [];
   inventory.forEach(element => {
-    if(element.car_make === 'Audi' || element.car_make ==='Mercedes-Benz' || element.car_make === 'Volkswagen' || element.car_make === 'BMW' ){
+    if(['Audi','Mercedes-Benz','Volkswagen','BMW'].indexOf(element.car_make) >=0)
+    {
       returnArray.push(element);
     }
-  })
+  });
   return returnArray;
 }
 
@@ -284,15 +285,9 @@ function getGermanCars(inventory) {
  *   return num * 2
  * }
 */
-const sum =  (a, b) => {
-     return a + b;
-   } 
-const addFive = (num) => {
-  return num + 5;
-} 
-const argTimesTwo = (num) => {
-  return num * 2;
-} 
+const sum =  (a, b) =>  a + b 
+const addFive = (num) => num + 5
+const argTimesTwo = (num) => num * 2
 
 /**
  * ### Challenge `carMaker`
@@ -311,7 +306,7 @@ function carMaker(odometer) {
   var returnedObject = {
     odometer: odometer,
     drive: function(distance){
-      odometer = odometer + distance;
+      odometer += distance;
       returnedObject.odometer = odometer;
       return odometer;
     }
